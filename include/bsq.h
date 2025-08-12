@@ -6,7 +6,7 @@
 /*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 00:37:47 by mikhaing          #+#    #+#             */
-/*   Updated: 2025/08/13 01:35:03 by mikhaing         ###   ########.fr       */
+/*   Updated: 2025/08/13 02:57:54 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,15 @@ typedef struct s_solution
 	int		size;
 }			t_solution;
 
+typedef struct s_point
+{
+	int		r;
+	int		c;
+}			t_point;
+
 void		solve_map_from_file(int fd);
 int			read_and_validate_map(int fd, t_map_info *info, char ***grid_addr);
+char		**read_grid(int fd, t_map_info *info);
 void		find_biggest_square(char **grid, t_map_info *info, t_solution *sol);
 void		draw_solution(char **grid, t_map_info *info, t_solution *solution);
 void		print_grid(char **grid, int height);

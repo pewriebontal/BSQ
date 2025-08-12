@@ -6,7 +6,7 @@
 #    By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 00:34:10 by mikhaing          #+#    #+#              #
-#    Updated: 2025/08/13 02:12:22 by mikhaing         ###   ########.fr        #
+#    Updated: 2025/08/13 02:56:40 by mikhaing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I include 
 SRCS =	src/main.c \
+		src/read_grid.c \
 		src/map_handler.c \
 		src/solver.c \
 		src/drawing.c \

@@ -6,7 +6,7 @@
 /*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 00:39:36 by mikhaing          #+#    #+#             */
-/*   Updated: 2025/08/13 02:20:07 by mikhaing         ###   ########.fr       */
+/*   Updated: 2025/08/13 02:38:18 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,25 @@ static void	check_and_record(t_solution *sol, int val, int r, int c)
 	}
 }
 
-static void	calculate_cell(int **cache, char **grid, t_map_info *info, int r,
-		int c)
+static void	calculate_cell(int **cache, char **grid, t_map_info *info,
+		t_point *p)
 {
-	if (grid[r][c] == info->obstacle)
-		cache[r][c] = 0;
+	if (grid[p->r][p->c] == info->obstacle)
+		cache[p->r][p->c] = 0;
 	else
 	{
-		if (r == 0 || c == 0)
-			cache[r][c] = 1;
+		if (p->r == 0 || p->c == 0)
+			cache[p->r][p->c] = 1;
 		else
-			cache[r][c] = 1 + min_three(cache[r][c - 1], cache[r - 1][c],
-					cache[r - 1][c - 1]);
+			cache[p->r][p->c] = 1 + min_three(cache[p->r][p->c - 1], cache[p->r
+					- 1][p->c], cache[p->r - 1][p->c - 1]);
 	}
 }
 
 void	find_biggest_square(char **grid, t_map_info *info, t_solution *sol)
 {
-	int	**cache;
-	int	r;
-	int	c;
+	int		**cache;
+	t_point	p;
 
 	sol->size = 0;
 	sol->row = 0;
@@ -58,17 +57,17 @@ void	find_biggest_square(char **grid, t_map_info *info, t_solution *sol)
 	cache = create_cache(info->height, info->width);
 	if (!cache)
 		return ;
-	r = 0;
-	while (r < info->height)
+	p.r = 0;
+	while (p.r < info->height)
 	{
-		c = 0;
-		while (c < info->width)
+		p.c = 0;
+		while (p.c < info->width)
 		{
-			calculate_cell(cache, grid, info, r, c);
-			check_and_record(sol, cache[r][c], r, c);
-			c++;
+			calculate_cell(cache, grid, info, &p);
+			check_and_record(sol, cache[p.r][p.c], p.r, p.c);
+			p.c++;
 		}
-		r++;
+		p.r++;
 	}
 	free_cache(cache, info->height);
 }

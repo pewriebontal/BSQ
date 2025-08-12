@@ -6,11 +6,11 @@
 /*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 00:39:21 by mikhaing          #+#    #+#             */
-/*   Updated: 2025/08/13 02:19:57 by mikhaing         ###   ########.fr       */
+/*   Updated: 2025/08/13 02:59:07 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include <bsq.h>
 
 void	draw_solution(char **grid, t_map_info *info, t_solution *solution)
 {
