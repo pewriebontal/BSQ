@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 max_size density"
+    exit 1
+fi
+
+max_size="$1"   # highest N for NxN maps
+density="$2"    # density argument for Perl script
+
+mkdir -p maps
+
+for n in $(seq 1 "$max_size"); do
+    filename="maps/${n}x${n}.map"
+    ./map_gen.pl "$n" "$n" "$density" > "$filename"
+    echo "Generated $filename"
+done
