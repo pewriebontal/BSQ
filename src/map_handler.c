@@ -6,7 +6,7 @@
 /*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 00:39:28 by mikhaing          #+#    #+#             */
-/*   Updated: 2025/08/13 02:20:02 by mikhaing         ###   ########.fr       */
+/*   Updated: 2025/08/13 02:26:58 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ static int	validate_grid_content(char **grid, t_map_info *info)
 int	read_and_validate_map(int fd, t_map_info *info, char ***grid_addr)
 {
 	char	*first_line;
+	char	*extra_line;
 
 	first_line = get_next_line(fd);
 	if (!first_line)
@@ -109,6 +110,13 @@ int	read_and_validate_map(int fd, t_map_info *info, char ***grid_addr)
 	*grid_addr = read_grid(fd, info);
 	if (!(*grid_addr))
 		return (0);
+	extra_line = get_next_line(fd);
+	if (extra_line != NULL)
+	{
+		free(extra_line);
+		free_grid(*grid_addr, info->height);
+		return (0);
+	}
 	if (!validate_grid_content(*grid_addr, info))
 	{
 		free_grid(*grid_addr, info->height);
