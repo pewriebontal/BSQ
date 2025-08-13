@@ -6,7 +6,7 @@
 #    By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 00:34:10 by mikhaing          #+#    #+#              #
-#    Updated: 2025/08/13 02:56:40 by mikhaing         ###   ########.fr        #
+#    Updated: 2025/08/13 14:08:25 by yiyuli         ###      ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS =	src/main.c \
 		utils/ft_strloc.c \
 		utils/ft_strlcpy.c \
 		utils/ft_substr.c \
+		utils/gnl_node.c \
 		utils/gnl.c
 
 OBJS = $(SRCS:.c=.o)

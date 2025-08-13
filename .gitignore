@@ -1,2 +1,4 @@
 *.o
 bsq
+compile_commands.json
+.cache/
